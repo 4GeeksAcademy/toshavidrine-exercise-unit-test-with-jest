@@ -1,11 +1,22 @@
-// This is my function that sums two numbers
-const sum = (a,b) => {
-    return a + b
+// app.js
+let oneEuroIs = {
+    "JPY": 156.5, // japan yen
+    "USD": 1.07, // us dollar
+    "GBP": 0.87, // british pound
+};
+
+function fromEuroToDollar(euro) {
+    return euro * oneEuroIs.USD;
 }
 
-// Just a console log for ourselves
-console.log(sum(7,3))
+function fromDollarToYen(dollar) {
+    let euro = dollar / oneEuroIs.USD;
+    return euro * oneEuroIs.JPY;
+}
 
-// Export the function to be used on other files 
-// (similar to the keyword "export" when using webpack)
-module.exports = { sum };
+function fromYenToPound(yen) {
+    let euro = yen / oneEuroIs.JPY;
+    return euro * oneEuroIs.GBP;
+}
+
+module.exports = { fromEuroToDollar, fromDollarToYen, fromYenToPound };
